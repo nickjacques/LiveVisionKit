@@ -125,3 +125,9 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+
+# macOS/Darwin
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
