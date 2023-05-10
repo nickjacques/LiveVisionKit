@@ -32,6 +32,13 @@ if(WIN32)
         CACHE PATH 
         "The plugin auto-install paths, leading to the root obs-studio directory"
     )
+elseif(APPLE)
+    set(
+        OBS_PLUGIN_AUTO_INSTALL_PATHS
+        "~/Library/Application Support/obs-studio"
+        CACHE PATH
+        "The plugin auto-install paths, leading to the root obs-studio directory"
+    )
 else()
     set(
         OBS_PLUGIN_AUTO_INSTALL_PATHS 
@@ -48,6 +55,8 @@ set(OBS_BUILD_PATH "" CACHE PATH "The path to the OBS-Studio build folder")
 set(OBS_REL_INCLUDE_PATH "/../libobs/")
 if(WIN32)
     set(OBS_REL_LIB_PATH "/install/bin/64bit/obs.lib")
+elseif(APPLE)
+    set(OBS_REL_LIB_PATH "/UI/Release/OBS.app/Contents/Frameworks/libobs.framework/libobs")
 else()
     set(OBS_REL_LIB_PATH "/install/bin/obs")
 endif()
