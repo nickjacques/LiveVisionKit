@@ -5,6 +5,18 @@ set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "CMakeTargets")
 
 if(APPLE)
     message(WARNING "Apple macOS systems are not officially supported!")
+
+    # Clang has some issues with its C++20 implementation (as of clang-1403.0.22.14.1) and throws errors about missing typenames.
+    # This causes the build to fail. To avoid this, use gcc/g++ which uses libstdc++ and doesn't throw typename errors.
+    find_program(GCC13 gcc-13)
+    find_program(GPP13 g++-13)
+    if(GCC13 AND GPP13)
+        set(CMAKE_C_COMPILER "gcc-13")
+        set(CMAKE_CXX_COMPILER "g++-13")
+        message(WARNING "Using gcc-13 and g++13 compilers.")
+    else()
+        message(FATAL_ERROR "Cannot find gcc-13 and g++-13 compilers.\nTry installing through Homebrew via 'brew install gcc@13'.")
+    endif()
 endif()
 
 # PROJECT DEFINITION
