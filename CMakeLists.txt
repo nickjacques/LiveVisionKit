@@ -4,9 +4,8 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "CMakeTargets")
 
 if(APPLE)
-    message(FATAL_ERROR "Apple systems are not supported!")
+    message(WARNING "Apple macOS systems are not officially supported!")
 endif()
-
 
 # PROJECT DEFINITION
 project(LiveVisionKit)
